@@ -1,0 +1,42 @@
+{
+  "version": "0.1.0",
+  "id": "@shopgate/ext-add-extra-price-info-from-property",
+  "components": [
+    {
+      "id": "CategoryItemPrice",
+      "path": "frontend/portals/category/CategoryItemPrice/index.jsx",
+      "target": "product-item.price",
+      "type": "portals"
+    },
+    {
+      "id": "ProductDetailPrice",
+      "path": "frontend/portals/product/ProductDetailPrice/index.jsx",
+      "target": "product.price.after",
+      "type": "portals"
+    }
+  ],
+  "steps": [
+    {
+      "path": "extension/addExtraPriceInfo.js",
+      "description": "Add extra price info property to product object",
+      "hooks": ["shopgate.catalog.getProducts.v1:rawProductHook"],
+      "input": [
+        {"key": "collection"}
+      ],
+      "output": [
+        {"key": "collection"}
+      ]
+    }
+  ],
+  "configuration": {
+    "extraPriceInfo" : {
+      "type": "admin",
+      "destination": "backend",
+      "default": "No of capsule",
+      "params": {
+        "type": "textbox",
+        "label": "Name of product property containing extra price information"
+      }
+    }
+  }
+}

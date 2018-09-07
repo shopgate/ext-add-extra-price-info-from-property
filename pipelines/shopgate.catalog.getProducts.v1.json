@@ -1,0 +1,435 @@
+{
+  "version": "1",
+  "pipeline": {
+    "id": "shopgate.catalog.getProducts.v1",
+    "input": [
+      {
+        "id": "1",
+        "key": "categoryId",
+        "optional": true
+      },
+      {
+        "id": "2",
+        "key": "searchPhrase",
+        "optional": true
+      },
+      {
+        "id": "3",
+        "key": "filters",
+        "optional": true
+      },
+      {
+        "id": "4",
+        "key": "offset",
+        "optional": true
+      },
+      {
+        "id": "5",
+        "key": "limit",
+        "optional": true
+      },
+      {
+        "id": "6",
+        "key": "sort",
+        "optional": true
+      },
+      {
+        "id": "7",
+        "key": "productIds",
+        "optional": true
+      },
+      {
+        "id": "8",
+        "key": "skipHighlightLoading",
+        "optional": true
+      },
+      {
+        "id": "9",
+        "key": "skipLiveshoppingLoading",
+        "optional": true
+      },
+      {
+        "id": "15",
+        "key": "showInactive",
+        "optional": true
+      },
+      {
+        "id": "750",
+        "key": "sgxsMeta"
+      },
+      {
+        "id": "751",
+        "key": "characteristics",
+        "optional": true
+      }
+    ],
+    "steps": [
+      {
+        "id": "@shopgate/products",
+        "path": "@shopgate/products/products/getProducts.js",
+        "type": "extension",
+        "input": [
+          {
+            "id": "1",
+            "key": "categoryId",
+            "optional": true
+          },
+          {
+            "id": "2",
+            "key": "searchPhrase",
+            "optional": true
+          },
+          {
+            "id": "3",
+            "key": "filters",
+            "optional": true
+          },
+          {
+            "id": "4",
+            "key": "offset",
+            "optional": true
+          },
+          {
+            "id": "5",
+            "key": "limit",
+            "optional": true
+          },
+          {
+            "id": "6",
+            "key": "sort",
+            "optional": true
+          },
+          {
+            "id": "7",
+            "key": "productIds",
+            "optional": true
+          },
+          {
+            "id": "15",
+            "key": "showInactive",
+            "optional": true
+          },
+          {
+            "id": "751",
+            "key": "characteristics",
+            "optional": true
+          }
+        ],
+        "output": [
+          {
+            "id": "10",
+            "key": "service"
+          },
+          {
+            "id": "11",
+            "key": "version"
+          },
+          {
+            "id": "12",
+            "key": "path"
+          },
+          {
+            "id": "13",
+            "key": "method"
+          },
+          {
+            "id": "14",
+            "key": "query"
+          }
+        ]
+      },
+      {
+        "id": "@shopgate/bigapi",
+        "path": "@shopgate/bigapi/big-api/getBigApiResult.js",
+        "type": "extension",
+        "input": [
+          {
+            "id": "10",
+            "key": "service"
+          },
+          {
+            "id": "11",
+            "key": "version"
+          },
+          {
+            "id": "12",
+            "key": "path"
+          },
+          {
+            "id": "13",
+            "key": "method"
+          },
+          {
+            "id": "14",
+            "key": "query"
+          }
+        ],
+        "output": [
+          {
+            "id": "100",
+            "key": "collection"
+          },
+          {
+            "id": "101",
+            "key": "meta"
+          }
+        ]
+      },
+      {
+        "id": "rawProductHook",
+        "type": "hook",
+        "input": [
+          {
+            "id": "100",
+            "key": "collection",
+            "optional": true
+          }
+        ],
+        "output": [
+          {
+            "id": "100",
+            "key": "collection",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "id": "@shopgate/products",
+        "path": "@shopgate/products/products/updateAvailableText.js",
+        "type": "extension",
+        "input": [
+          {
+            "id": "100",
+            "key": "products"
+          }
+        ],
+        "output": [
+          {
+            "id": "100",
+            "key": "products"
+          }
+        ]
+      },
+      {
+        "id": "@shopgate/products",
+        "path": "@shopgate/products/products/convertProducts.js",
+        "type": "extension",
+        "input": [
+          {
+            "id": "100",
+            "key": "products"
+          },
+          {
+            "id": "101",
+            "key": "meta"
+          }
+        ],
+        "output": [
+          {
+            "id": "100",
+            "key": "products"
+          },
+          {
+            "id": "301",
+            "key": "productsLength"
+          },
+          {
+            "id": "1000",
+            "key": "totalProductCount"
+          }
+        ]
+      },
+      {
+        "id": "@shopgate/products",
+        "path": "@shopgate/products/products/addPrices.js",
+        "type": "extension",
+        "input": [
+          {
+            "id": "750",
+            "key": "sgxsMeta"
+          },
+          {
+            "id": "100",
+            "key": "products"
+          }
+        ],
+        "output": [
+          {
+            "id": "100",
+            "key": "products"
+          }
+        ]
+      },
+      {
+        "id": "@shopgate/products",
+        "path": "@shopgate/products/products/formatPrices.js",
+        "type": "extension",
+        "input": [
+          {
+            "id": "100",
+            "key": "products"
+          }
+        ],
+        "output": [
+          {
+            "id": "100",
+            "key": "products"
+          }
+        ]
+      },
+      {
+        "else": {
+          "id": "shopgate.catalog.addHighlights.v1",
+          "type": "pipeline",
+          "input": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ],
+          "output": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ]
+        },
+        "then": {
+          "type": "staticValue",
+          "input": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ],
+          "output": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ],
+          "values": [
+            {
+              "key": "products",
+              "passthrough": "products"
+            }
+          ]
+        },
+        "type": "conditional",
+        "input": [
+          {
+            "id": "8",
+            "key": "skipHighlightLoading",
+            "optional": true
+          },
+          {
+            "id": "301",
+            "key": "productsLength"
+          }
+        ],
+        "expression": {
+          "any": [
+            {
+              "ok": [
+                {
+                  "name": "skipHighlightLoading",
+                  "type": "input"
+                }
+              ]
+            },
+            {
+              "notok": [
+                {
+                  "name": "productsLength",
+                  "type": "input"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "else": {
+          "id": "shopgate.catalog.addLiveshoppings.v1",
+          "type": "pipeline",
+          "input": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ],
+          "output": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ]
+        },
+        "then": {
+          "type": "staticValue",
+          "input": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ],
+          "output": [
+            {
+              "id": "100",
+              "key": "products"
+            }
+          ],
+          "values": [
+            {
+              "key": "products",
+              "passthrough": "products"
+            }
+          ]
+        },
+        "type": "conditional",
+        "input": [
+          {
+            "id": "9",
+            "key": "skipLiveshoppingLoading",
+            "optional": true
+          },
+          {
+            "id": "301",
+            "key": "productsLength"
+          }
+        ],
+        "expression": {
+          "any": [
+            {
+              "ok": [
+                {
+                  "name": "skipLiveshoppingLoading",
+                  "type": "input"
+                }
+              ]
+            },
+            {
+              "notok": [
+                {
+                  "name": "productsLength",
+                  "type": "input"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "output": [
+      {
+        "id": "1000",
+        "key": "totalProductCount"
+      },
+      {
+        "id": "100",
+        "key": "products"
+      }
+    ],
+    "public": true
+  }
+}
