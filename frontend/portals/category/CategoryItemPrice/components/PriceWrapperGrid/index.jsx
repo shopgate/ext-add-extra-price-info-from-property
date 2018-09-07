@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import Price from '../../../../../components/Price';
-import PriceInfo from '../../../../../components/PriceInfo';
-import PriceStriked from '../../../../../components/PriceStriked';
+import Price from '@shopgate/pwa-ui-shared/Price';
+import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import styles from './style';
 
 /**
