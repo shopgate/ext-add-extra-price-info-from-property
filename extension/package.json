@@ -4,14 +4,24 @@
   "description": "",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --use_strict --recursive test",
+    "test:watch": "_mocha --watch --use_strict --recursive test",
+    "test:unit": "mocha --use_strict --recursive test/unit",
+    "test:integration": "mocha --use_strict --timeout 3000 --recursive test/integration",
+    "cover:unit": "nyc mocha --recursive test/unit",
+    "cover:integration": "nyc mocha --use_strict --timeout 3000 --recursive test/integration",
+    "cover": "nyc --reporter=lcov --reporter=text mocha  --use_strict --timeout 3000 --recursive test/integration --recursive test/unit",
+    "lint": "eslint --ignore-path ../.gitignore --ext .js .",
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^4.18.2",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^5.2.0"
   }
 }
