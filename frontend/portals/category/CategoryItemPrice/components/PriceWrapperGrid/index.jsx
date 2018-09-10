@@ -5,6 +5,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import styles from './style';
+import ExtraPriceInfo from '../ExtraPriceInfo';
 
 /**
  * The PriceWrapperGrid component.
@@ -21,11 +22,7 @@ const PriceWrapperGrid = ({ price, extraPriceInfo }) => (
           discounted={!!price.discount}
           currency={price.currency}
         />
-        {extraPriceInfo && (
-          <div className={styles.extraPriceInfoWrapper}>
-            {extraPriceInfo}
-          </div>
-        )}
+        <ExtraPriceInfo text={extraPriceInfo} styles={styles.extraPriceInfoWrapper} />
       </Grid.Item>
       {(price.msrp > 0 && price.unitPrice !== price.msrp) && (
         <Grid.Item>
