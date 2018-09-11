@@ -19,7 +19,7 @@
     {
       "path": "extension/addExtraPriceInfo.js",
       "description": "Add extra price info property to product object",
-      "hooks": ["shopgate.catalog.getProducts.v1:rawProductHook"],
+      "hooks": ["shopgate.catalog.getProducts.v1:afterFetchProducts"],
       "input": [
         {"key": "collection"}
       ],

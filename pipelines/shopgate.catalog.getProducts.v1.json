@@ -176,7 +176,7 @@
         ]
       },
       {
-        "id": "rawProductHook",
+        "id": "afterFetchProducts",
         "type": "hook",
         "input": [
           {
