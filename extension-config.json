@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "id": "@shopgate/ext-add-extra-price-info-from-property",
+  "id": "@shopgate/add-extra-price-info-from-property",
   "components": [
     {
       "id": "CategoryItemPrice",
