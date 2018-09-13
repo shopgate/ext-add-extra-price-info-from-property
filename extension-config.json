@@ -21,10 +21,10 @@
       "description": "Add extra price info property to product object",
       "hooks": ["shopgate.catalog.getProducts.v1:afterFetchProducts"],
       "input": [
-        {"key": "collection"}
+        {"key": "products"}
       ],
       "output": [
-        {"key": "collection"}
+        {"key": "products"}
       ]
     }
   ],

@@ -9,7 +9,7 @@ const context = {
   }
 }
 
-const collectionWithExtraPrice = [
+const productsWithExtraPrice = [
   {
     id: '123',
     properties: [
@@ -21,7 +21,7 @@ const collectionWithExtraPrice = [
   }
 ]
 
-const collectionWithoutExtraPrice = [
+const productsWithoutExtraPrice = [
   {
     id: '123',
     properties: [
@@ -33,7 +33,7 @@ const collectionWithoutExtraPrice = [
   }
 ]
 
-const collectionAfterExtraPriceAdded = [
+const productsAfterExtraPriceAdded = [
   {
     id: '123',
     properties: [
@@ -48,7 +48,7 @@ const collectionAfterExtraPriceAdded = [
   }
 ]
 
-const collectionAfterNoExtraPriceAdded = [
+const productsAfterNoExtraPriceAdded = [
   {
     id: '123',
     properties: [
@@ -65,14 +65,14 @@ const collectionAfterNoExtraPriceAdded = [
 
 describe('addExtraPrice', () => {
   it('should have extra price', async () => {
-    const results = await addExtraPrice(context, {collection: collectionWithExtraPrice})
+    const results = await addExtraPrice(context, {products: productsWithExtraPrice})
 
-    chai.assert.deepEqual(results, {collection: collectionAfterExtraPriceAdded})
+    chai.assert.deepEqual(results, {products: productsAfterExtraPriceAdded})
   })
 
   it('should not have extra price', async () => {
-    const results = await addExtraPrice(context, {collection: collectionWithoutExtraPrice})
+    const results = await addExtraPrice(context, {products: productsWithoutExtraPrice})
 
-    chai.assert.deepEqual(results, {collection: collectionAfterNoExtraPriceAdded})
+    chai.assert.deepEqual(results, {products: productsAfterNoExtraPriceAdded})
   })
 })

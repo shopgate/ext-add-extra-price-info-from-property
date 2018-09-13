@@ -8,7 +8,7 @@ module.exports = async (context, input) => {
     return input.products
   }
   const propertyLabel = context.config.extraPriceInfo
-  const collection = input.collection.map(product => {
+  const products = input.products.map(product => {
     const extraPriceInfo = product.properties
       ? findPropertyValue(propertyLabel, product.properties)
       : null
@@ -23,7 +23,7 @@ module.exports = async (context, input) => {
     return productCopy
   })
 
-  return { collection }
+  return { products }
 }
 
 /**
