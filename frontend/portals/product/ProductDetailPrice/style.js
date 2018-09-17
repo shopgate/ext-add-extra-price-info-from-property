@@ -1,11 +1,10 @@
 import { css } from 'glamor';
 
 const extraPriceInfoWrapper = css({
-  display: 'flex',
-  position: 'relative',
-  whiteSpace: 'nowrap',
-  fontSize: '0.70rem',
+  fontSize: 12,
   marginTop: 4,
+  textAlign: 'right',
+  width: '100%',
 }).toString();
 
 export default { extraPriceInfoWrapper };
