@@ -41,7 +41,7 @@ exports[`<ProductDetailPrice /> should render extraPrice 1`] = `
       extraPriceInfo="120 Tabletten"
     >
       <div
-        className="css-1fnuc4y"
+        className="css-rok1oc"
       >
         120 Tabletten
       </div>
