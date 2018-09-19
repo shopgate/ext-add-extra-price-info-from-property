@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductDetailPrice /> should not render extraPrice 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductDetailPrice)>
+    <ProductDetailPrice
+      dispatch={[Function]}
+      extraPriceInfo={null}
+    />
+  </Connect(ProductDetailPrice)>
+</Provider>
+`;
+
+exports[`<ProductDetailPrice /> should render extraPrice 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductDetailPrice)>
+    <ProductDetailPrice
+      dispatch={[Function]}
+      extraPriceInfo="120 Tabletten"
+    >
+      <div
+        className="css-rok1oc"
+      >
+        120 Tabletten
+      </div>
+    </ProductDetailPrice>
+  </Connect(ProductDetailPrice)>
+</Provider>
+`;
