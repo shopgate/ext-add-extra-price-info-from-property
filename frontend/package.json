@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/add-extra-price-info-from-property",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "This extension is used to add information to prices acquired from a product property",
   "license": "Apache-2.0",
   "scripts": {
