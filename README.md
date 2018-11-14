@@ -4,6 +4,19 @@
 
 This extension takes the value of a property of products and adds it under the price of the products.
 
+## Configuration
+
+Set the following values in your Shopgate Connect Admin:
+- `extraPriceInfo` - (text) Name of product property containing extra price information
+
+### Example
+
+```json
+{
+    "extraPriceInfo": "No of capsule"
+}
+```
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) file for more information.
