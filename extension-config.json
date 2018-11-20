@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "id": "@shopgate/add-extra-price-info-from-property",
   "components": [
     {
@@ -19,7 +19,10 @@
     {
       "path": "extension/addExtraPriceInfo.js",
       "description": "Add extra price info property to product object",
-      "hooks": ["shopgate.catalog.getProducts.v1:afterFetchProducts"],
+      "hooks": [
+        "shopgate.catalog.getProducts.v1:afterFetchProducts",
+        "shopgate.catalog.getProductsByIds.v1:afterFetchProducts"
+      ],
       "input": [
         {"key": "products"}
       ],
