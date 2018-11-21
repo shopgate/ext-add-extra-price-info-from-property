@@ -1,5 +1,5 @@
 
-## [1.0.1-beta.1] - 2018-11-21
+## [1.0.1] - 2018-11-21
 ### Added
 - implemented hook to support shopgate-products 1.5.0
 

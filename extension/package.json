@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/add-extra-price-info-from-property",
-  "version": "1.0.1-beta.1",
+  "version": "1.0.1",
   "description": "",
   "license": "Apache-2.0",
   "scripts": {
