@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import {
   getProductById,
-  getCurrentProduct,
+  getProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -51,6 +51,6 @@ export const getProductPriceById = createSelector(
  * @return {Object}
  */
 export const getCurrentProductExtraPriceInfo = createSelector(
-  getCurrentProduct,
+  getProduct,
   product => findExtraPriceInfo(product)
 );
