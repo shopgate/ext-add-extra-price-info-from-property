@@ -13,12 +13,17 @@ exports[`<ProductDetailPrice /> should not render extraPrice 1`] = `
     }
   }
 >
-  <Connect(ProductDetailPrice)>
-    <ProductDetailPrice
-      dispatch={[Function]}
-      extraPriceInfo={null}
-    />
-  </Connect(ProductDetailPrice)>
+  <Component>
+    <Connect(ProductDetailPrice)
+      productId={null}
+    >
+      <ProductDetailPrice
+        dispatch={[Function]}
+        extraPriceInfo={null}
+        productId={null}
+      />
+    </Connect(ProductDetailPrice)>
+  </Component>
 </Provider>
 `;
 
@@ -35,17 +40,22 @@ exports[`<ProductDetailPrice /> should render extraPrice 1`] = `
     }
   }
 >
-  <Connect(ProductDetailPrice)>
-    <ProductDetailPrice
-      dispatch={[Function]}
-      extraPriceInfo="120 Tabletten"
+  <Component>
+    <Connect(ProductDetailPrice)
+      productId="foo"
     >
-      <div
-        className="css-rok1oc"
+      <ProductDetailPrice
+        dispatch={[Function]}
+        extraPriceInfo="120 Tabletten"
+        productId="foo"
       >
-        120 Tabletten
-      </div>
-    </ProductDetailPrice>
-  </Connect(ProductDetailPrice)>
+        <div
+          className="css-rok1oc"
+        >
+          120 Tabletten
+        </div>
+      </ProductDetailPrice>
+    </Connect(ProductDetailPrice)>
+  </Component>
 </Provider>
 `;

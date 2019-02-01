@@ -10,6 +10,11 @@ beforeEach(() => {
   jest.resetModules();
 });
 
+let mockedProductId = null;
+jest.mock('@shopgate/pwa-extension-kit/connectors', () => ({
+  withPageProductId: WrappedComponent => () => <WrappedComponent productId={mockedProductId} />,
+}));
+
 /**
  * Creates component with provided store state.
  * @param {Object} mockedState Mocked stage.
@@ -30,9 +35,6 @@ const createComponent = (mockedState) => {
 
 const mockedStateWithExtraPriceInfo = {
   product: {
-    currentProduct: {
-      productId: 'foo',
-    },
     productsById: {
       foo: {
         productData: {
@@ -48,9 +50,6 @@ const mockedStateWithExtraPriceInfo = {
 
 const mockedStateWithoutExtraPriceInfo = {
   product: {
-    currentProduct: {
-      productId: 'foo',
-    },
     productsById: {
       foo: {
         productData: {
@@ -63,6 +62,7 @@ const mockedStateWithoutExtraPriceInfo = {
 
 describe('<ProductDetailPrice />', () => {
   it('should render extraPrice', () => {
+    mockedProductId = 'foo';
     const component = createComponent(mockedStateWithExtraPriceInfo);
     const ExtraPriceDiv = component.find('div');
 
@@ -71,6 +71,7 @@ describe('<ProductDetailPrice />', () => {
   });
 
   it('should not render extraPrice', () => {
+    mockedProductId = null;
     const component = createComponent(mockedStateWithoutExtraPriceInfo);
     const ExtraPriceDiv = component.find('div');
 

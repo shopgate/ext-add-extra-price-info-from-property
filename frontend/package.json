@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/add-extra-price-info-from-property",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "This extension is used to add information to prices acquired from a product property",
   "license": "Apache-2.0",
   "scripts": {
@@ -38,7 +38,9 @@
     "redbox-react": "^1.5.0",
     "redux-mock-store": "^1.5.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@shopgate/pwa-extension-kit": "^0.2.0"
+  },
   "peerDependencies": {
     "@shopgate/pwa-common-commerce": "^6.1.0"
   }
