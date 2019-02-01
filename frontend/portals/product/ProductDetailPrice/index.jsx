@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withPageProductId } from '@shopgate/pwa-extension-kit/connectors';
 import connect from './connector';
 import styles from './style';
 
@@ -23,4 +24,4 @@ ProductDetailPrice.defaultProps = {
   extraPriceInfo: null,
 };
 
-export default connect(ProductDetailPrice);
+export default withPageProductId(connect(ProductDetailPrice));
