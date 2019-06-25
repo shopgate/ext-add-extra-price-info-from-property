@@ -1,3 +1,6 @@
+## [2.0.2] - 2019-06-25
+### Fixed
+- Fixes small css problem with the pricing.
 
 ## [2.0.0] - 2018-01-15
 
